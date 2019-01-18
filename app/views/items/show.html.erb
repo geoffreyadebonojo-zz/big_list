@@ -1,15 +1,20 @@
+
 <h1><%= @item.name %></h1>
-<% if @videos %>
+
+<% if @images %>
   <div class="image-container">
     <% @images.each do |url| %>
-      <img src="<%= url %>" alt="" class="show-thumbnail">
+      <div class="img-wrapper">
+        <img id="drag1" src="<%= url %>" alt="" draggable="true" ondragstart="drag(event) class="show-thumbnail">
+      </div>
     <% end %>
   </div>
 <% end %>
+
 <% if @videos %>
   <div class="videos-container">
     <% @videos.each do |url| %>
-      <iframe id="video" src="<%= url %>" frameborder="0" allowfullscreen draggable=true></iframe>
+      <iframe id="video" src="<%= url %>" frameborder="0" allowfullscreen draggable="true"></iframe>
     <% end %>
   </div>
 <% end %>
