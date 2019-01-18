@@ -1,1 +1,15 @@
 <h1><%= @item.name %></h1>
+<% if @videos %>
+  <div class="image-container">
+    <% @images.each do |url| %>
+      <img src="<%= url %>" alt="" class="show-thumbnail">
+    <% end %>
+  </div>
+<% end %>
+<% if @videos %>
+  <div class="videos-container">
+    <% @videos.each do |url| %>
+      <iframe id="video" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
+    <% end %>
+  </div>
+<% end %>
