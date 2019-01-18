@@ -1,0 +1,8 @@
+<h1 id="item-headline">Items</h1>
+<%# render _form for new items %>
+<div class="container">
+<% @items.each do |item| %>
+  <div><%= ItemPresenter.new(item).category %></div>
+  <div><%= item.name %></div>
+<% end %>
+</div>
