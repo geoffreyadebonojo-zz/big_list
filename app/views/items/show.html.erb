@@ -9,7 +9,7 @@
 <% if @videos %>
   <div class="videos-container">
     <% @videos.each do |url| %>
-      <iframe id="video" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
+      <iframe id="video" src="<%= url %>" frameborder="0" allowfullscreen draggable=true></iframe>
     <% end %>
   </div>
 <% end %>

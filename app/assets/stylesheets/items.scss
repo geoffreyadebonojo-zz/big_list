@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$img: 100px;
+
+
 .container {
   display: grid;
   grid-template-columns: 2em 5em;
@@ -19,4 +22,25 @@
 
 .item-name a:hover{
   text-decoration: underline;
+}
+
+
+//// SHOW
+
+.image-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  border: 1px red solid;
+  height: 60%;
+  width: 100%;
+  grid-gap: 5px;
+}
+
+img.show-thumbnail {
+  width: 100px;
+  height: 100px;
+}
+
+.videos-container {
+  display: block;
 }
