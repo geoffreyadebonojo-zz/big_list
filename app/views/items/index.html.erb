@@ -1,5 +1,5 @@
 <h1 id="item-headline">Items</h1>
-<%# render _form for new items %>
+<%= link_to "New Item", new_item_path %>
 <div class="container">
 <% @items.each do |item| %>
   <div class="category-icon"><%= ItemPresenter.new(item).category %></div>
