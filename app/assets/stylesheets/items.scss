@@ -12,3 +12,11 @@
   font-family: 'Pacifico', cursive;
   margin: 0 0 0 0.5em;
 }
+
+.item-name a{
+  text-decoration: none;
+}
+
+.item-name a:hover{
+  text-decoration: underline;
+}

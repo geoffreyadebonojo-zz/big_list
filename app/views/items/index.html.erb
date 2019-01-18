@@ -2,7 +2,7 @@
 <%# render _form for new items %>
 <div class="container">
 <% @items.each do |item| %>
-  <div><%= ItemPresenter.new(item).category %></div>
-  <div><%= item.name %></div>
+  <div class="category-icon"><%= ItemPresenter.new(item).category %></div>
+  <div class="item-name"><%= link_to item.name, @item %></div>
 <% end %>
 </div>

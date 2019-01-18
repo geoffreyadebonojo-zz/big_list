@@ -20,8 +20,6 @@ gem 'httparty'
 gem 'nokogiri'
 gem 'mechanize'
 
-gem 'factory_bot_rails'
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -33,6 +31,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'launchy'
+  gem 'simplecov'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
