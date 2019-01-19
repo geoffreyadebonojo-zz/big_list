@@ -1,5 +1,4 @@
-<%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, items_path %>
-
+<br>
 <h1><%= @item.name %></h1>
 
 <%= form_for [@item] do |f| %>
@@ -42,7 +41,7 @@
 <% if @images %>
   <div class="image-container">
     <% @images.each do |url| %>
-      <button class="img-wrapper" onclick='update(" <%= url %> ")'>
+      <button class="img-wrapper" onclick='update("<%= url %>")'>
         <img id="drag1" src="<%= url %>" alt="" draggable="true" ondragstart="drag(event)" class="show-thumbnail">
       </button>
     <% end %>

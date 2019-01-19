@@ -1,1 +1,33 @@
-<%= render 'form' %>
+<br>
+<%= form_for [@item] do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :name, {id: :item_name, required: true, placeholder:"New Item"} %>
+  </div>
+
+  <hr>
+
+  <div class="field" id="icons-array">
+    <% @icons_array.each do |icon| %>
+      <input type="radio" name="item[category]" value="<%= icon[1] %>">
+        <div><%= icon[0] %></div>
+      <br>
+    <% end %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
