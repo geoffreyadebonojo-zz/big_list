@@ -7,9 +7,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     # cache this
     # @images = GoogleImageService.new(@item.name).img_array.first(8)
-    # @videos = YoutubeService.new(@item.name).embed_links.uniq.first(16)
+    @videos = YoutubeService.new(@item.name).embed_links.uniq.first(16)
     # @wikipedia_search_term = @item.name.gsub(/[ ]/, "_")
-    @google_search_results = GoogleService.new(@item.name).load_pages
+    # @google_search_results = GoogleService.new(@item.name).load_pages
     # @google_search_results = [["fake results 1"], ["fake results 2"]]
     # binding.pry
   end

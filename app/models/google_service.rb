@@ -39,7 +39,7 @@ class GoogleService
       page(page_number).each do |link|
         all_results << link
       end
-      sleep(rand(5))
+      sleep(rand(5..10))
     end
     all_results
   end
