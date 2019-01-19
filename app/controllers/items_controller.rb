@@ -6,10 +6,14 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     # cache this
-    # @videos = YoutubeService.new(@item.name).embed_links.uniq.first(16)
-    # @wikipedia_search_term = @item.name.gsub(/[ ]/, "_")
-    # @google_search_results = GoogleService.new(@item.name).load_pages
-    # @google_search_results = [["fake results 1"], ["fake results 2"]]
+    if params[:cmd] == "youtube"
+      @videos = YoutubeService.new(@item.name).embed_links.uniq.first(16)
+    elsif params[:cmd] == "wikipedia"
+      @wikipedia_search_term = @item.name.gsub(/[ ]/, "_")
+    elsif params[:cmd] == "google"
+      # @google_search_results = GoogleService.new(@item.name).load_pages
+      @google_search_results = [["link1", "l"],["link2", "l"],["link3", "l"],["link4", "l"]]
+    end
   end
 
   def create
