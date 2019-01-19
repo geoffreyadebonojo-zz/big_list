@@ -37,7 +37,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @icons_array = icons.zip(Item.all.pluck(:category).uniq)
     @icons_array.pop
-    @images = GoogleImageService.new(@item.name).img_array
+    images_raw = GoogleImageService.new(@item.name).img_array
+    images_raw.pop
+    @images = images_raw
   end
 
   def update
