@@ -1,10 +1,15 @@
-<h1 id="item-headline">Items</h1>
-<%= link_to "New Item", new_item_path %>
-<div class="container">
+<div class="main container">
 <% @items.each do |item| %>
+
   <div class="category-icon"><%= ItemPresenter.new(item).category %></div>
-  <div class="item-image"><img src="<%= item.image %>" alt="no img"></div>
+
+  <% if item.image %>
+    <div class="item-image"><img src="<%= item.image %>" alt="select"></div>
+  <% else %>
+    <div><%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_item_path(item) %></div>
+  <% end %>
+
   <div class="item-name"><%= link_to item.name, item_path(item) %></div>
-  <div><%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_item_path(item) %></div>
+
 <% end %>
 </div>
