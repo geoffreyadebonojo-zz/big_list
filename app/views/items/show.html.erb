@@ -1,13 +1,9 @@
 
 <h1><%= @item.name %></h1>
 
-<% if @images %>
-  <div class="image-container">
-    <% @images.each do |url| %>
-      <div class="img-wrapper">
-        <img id="drag1" src="<%= url %>" alt="" draggable="true" ondragstart="drag(event) class="show-thumbnail">
-      </div>
-    <% end %>
+<% if @documentary %>
+  <div class="documentaries-container">
+    <%= link_to "#{@documentary}", @documentary, target:"_blank" %>
   </div>
 <% end %>
 
@@ -26,22 +22,15 @@
 <% end %>
 
 <% if @google_search_results %>
-<div id="google-frame">
-    <iframe src="<%= @google_search_results[5][1] %>" frameborder="0"></iframe>
-  </div>
-
-  <div class="google-search-results-container">
-    <ul>
-      <% @google_search_results.each do |result| %>
-        <li><button onclick='update("<%=result[1]%>")', target:"_blank", class: "google-link" ><%=result[0]%></button></li>
-      <% end %>
-    </ul>
+  <div id="google-frame">
+    <div class="google-search-results-container">
+      <ul>
+        <% @google_search_results.each do |result| %>
+        <!-- onclick='update("<%#result[1]%>")' -->
+          <li><%= link_to result[0], result[1], target:"_blank", class: "thumbnail-preview" %></li>
+          <hr>
+        <% end %>
+      </ul>
+    </div>
   </div>
 <% end %>
-<script>
-
-  function update(link){
-    localStorage.setItem("current", link);
-    document.getElementById("google-frame").innerHTML = '<iframe src=' + localStorage.getItem("current") + 'frameborder="0"></iframe>';
-  }
-</script>
