@@ -25,20 +25,23 @@
   </div>
 <% end %>
 
-<div class="google-search-results-container">
-  <iframe src="<%= @google_search_results[5][1] %>" frameborder="0"></iframe>
-  <ul>
-    <% @google_search_results.each do |result| %>
-      <li><%= link_to result[0], result[1], target:"_blank", class: "google-link" %></li>
-    <% end %>
-  </ul>
-</div>
+<% if @google_search_results %>
+<div id="google-frame">
+    <iframe src="<%= @google_search_results[5][1] %>" frameborder="0"></iframe>
+  </div>
 
+  <div class="google-search-results-container">
+    <ul>
+      <% @google_search_results.each do |result| %>
+        <li><button onclick='update("<%=result[1]%>")', target:"_blank", class: "google-link" ><%=result[0]%></button></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <script>
 
-  var x = document.getElementsByClassName('google-link');
-  for (var i = 0; i < x.length; i++){
-    console.log(x[i].href);
+  function update(link){
+    localStorage.setItem("current", link);
+    document.getElementById("google-frame").innerHTML = '<iframe src=' + localStorage.getItem("current") + 'frameborder="0"></iframe>';
   }
-
 </script>
