@@ -2,8 +2,6 @@
 
 <h1><%= @item.name %></h1>
 
-<div id="background"></div>
-
 <%= form_for [@item] do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
@@ -24,6 +22,8 @@
       <br>
     <% end %>
   </div>
+
+  <div id="background"></div>
 
   <div class="field" id="img-url">
   </div>
@@ -52,9 +52,8 @@
 <script>
   function update(link){
     localStorage.setItem("current", link);
-    // document.getElementById("google-frame").innerHTML = '<iframe src=' + localStorage.getItem("current") + 'frameborder="0"></iframe>';
     document.getElementById("background").innerHTML = '<img src="' + localStorage.getItem("current") + '" alt="click to add image"></img>';
-    document.getElementById("img-url").innerHTML = '<input id="item_image" name="item[image]" value=' + localStorage.getItem("current") + '>';
+    document.getElementById("img-url").innerHTML = '<input id="item_image" type="hidden" name="item[image]" value=' + localStorage.getItem("current") + '>';
     console.log(document.getElementById("img-url"));
   }
 </script>
