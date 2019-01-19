@@ -3,6 +3,8 @@
 <div class="container">
 <% @items.each do |item| %>
   <div class="category-icon"><%= ItemPresenter.new(item).category %></div>
+  <div class="item-image"><img src="<%= item.image %>" alt="no img"></div>
   <div class="item-name"><%= link_to item.name, item_path(item) %></div>
+  <div><%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_item_path(item) %></div>
 <% end %>
 </div>
