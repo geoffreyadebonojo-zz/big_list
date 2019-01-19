@@ -1,6 +1,9 @@
 <br>
-<h1><%= @item.name %></h1>
-
+<div id="item-options"><%= @item.name %>
+<div class="link"><%= link_to '<i class="fab fa-youtube"></i>'.html_safe, item_path(@item, :params=>{:cmd=>"youtube"}) %></div>
+<div class="link"><%= link_to '<i class="fab fa-google" aria-hidden="true"></i>'.html_safe, item_path(@item, :params=>{:cmd=>"google"}) %></div>
+<div class="link"><%= link_to '<i class="fab fa-wikipedia-w"></i>'.html_safe, item_path(@item, :params=>{:cmd=>"wikipedia"}) %></div>
+</div>
 <% if @documentary %>
   <div class="documentaries-container">
     <%= link_to "#{@documentary}", @documentary, target:"_blank" %>
@@ -23,14 +26,12 @@
 
 <% if @google_search_results %>
   <div id="google-frame">
-    <div class="google-search-results-container">
-      <ul>
-        <% @google_search_results.each do |result| %>
-        <!-- onclick='update("<%#result[1]%>")' -->
-          <li><%= link_to result[0], result[1], target:"_blank", class: "thumbnail-preview" %></li>
-          <hr>
-        <% end %>
-      </ul>
-    </div>
+    <div>Links:</div>
+    <% @google_search_results.each do |result| %>
+      <div class="google-search-results-container">
+        <%= link_to result[0], result[1], target:"_blank", class: "thumbnail-preview" %>
+      </div>
+      <hr>
+    <% end %>
   </div>
 <% end %>
