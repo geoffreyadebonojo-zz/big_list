@@ -24,6 +24,11 @@ $img: 100px;
   text-decoration: underline;
 }
 
+#wikipedia-frame {
+  width: 100%;
+  height: 200px;
+}
+
 
 //// SHOW
 
@@ -55,4 +60,30 @@ img.show-thumbnail {
 #div1 img {
   width: 400px;
   height: 400px;
+}
+
+
+////// NEw
+
+#icons-array {
+  display: flex;
+  width: 100%;
+
+  div {
+    width: 100px;
+  }
+}
+
+input#item_name {
+  font-size: 1em;
+  border: transparent;
+  width: 80%;
+  margin: 0 10%;
+}
+
+input#item_name::placeholder {
+  color: blue;
+  font-style: italic;
+  text-indent: 20px;
+  font-size: 0.8em;
 }

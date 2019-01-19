@@ -18,3 +18,27 @@
     <% end %>
   </div>
 <% end %>
+
+<% if @wikipedia_search_term %>
+  <div class="wikipedia-container">
+    <iframe src="https://en.wikipedia.org/wiki/<%= @wikipedia_search_term %>" id="wikipedia-frame"></iframe>
+  </div>
+<% end %>
+
+<div class="google-search-results-container">
+  <iframe src="<%= @google_search_results[5][1] %>" frameborder="0"></iframe>
+  <ul>
+    <% @google_search_results.each do |result| %>
+      <li><%= link_to result[0], result[1], target:"_blank", class: "google-link" %></li>
+    <% end %>
+  </ul>
+</div>
+
+<script>
+
+  var x = document.getElementsByClassName('google-link');
+  for (var i = 0; i < x.length; i++){
+    console.log(x[i].href);
+  }
+
+</script>
