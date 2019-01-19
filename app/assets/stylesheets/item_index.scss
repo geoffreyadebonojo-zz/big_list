@@ -1,6 +1,8 @@
 .container {
   display: grid;
-  grid-template-columns: 2em 4em 16em;
+  grid-template-columns: 3em 16em;
+  position: relative;
+  left: 20px;
   margin: 0 0 0 1em;
 }
 
@@ -20,13 +22,16 @@
 .item-image img {
   height: 80px;
   width: 80px;
+  border: transparent 2px solid;
 }
 
-.image-icon:hover {
-  color: blue;
+.item-image img:hover {
+  border: red 2px solid;
 }
 
-.image-icon:hover:after {
-  font-size: 0.4em;
-  content: 'edit \a';
+.link {
+  background: grey;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
 }

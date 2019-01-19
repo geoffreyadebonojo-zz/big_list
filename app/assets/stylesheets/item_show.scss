@@ -37,7 +37,19 @@ img.show-thumbnail {
   text-decoration: none;
 }
 
+.google-search-results-container {
+  display: block;
+}
+
 #wikipedia-frame {
   width: 100%;
-  height: 200px;
+  height: 400px;
+}
+
+#item-options {
+  display: flex;
+}
+
+.google-search-results-container {
+  font-size: 0.5em;
 }
