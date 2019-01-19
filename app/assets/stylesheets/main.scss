@@ -2,7 +2,7 @@ body {
   font-size: 3em;
   background: #5B85AA;
   margin: 0;
-  font-family: 'Open Sans'; 
+  font-family: 'Open Sans';
 }
 
 ul {
@@ -19,6 +19,12 @@ li {
 a {
   text-decoration: none;
 }
+
+.main {
+  position: relative;
+  top: 2em;
+}
+
 
 #thumbnail-preview img {
   position: relative;

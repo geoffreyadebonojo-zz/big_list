@@ -1,0 +1,21 @@
+ul#nav-links {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 1em;
+  background: grey;
+
+  li {
+    width: 3em;
+
+    &:hover {
+      background: white;
+    }
+
+    a i {
+      position: relative;
+      margin-left: 30%;
+      margin-top: 0.5em;
+    }
+  }
+}
