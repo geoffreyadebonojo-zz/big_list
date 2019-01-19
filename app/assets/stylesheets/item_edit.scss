@@ -1,0 +1,23 @@
+div.actions input{
+  position: relative;
+  font-size: 0.4em;
+  float: right;
+  left: -6em;
+  bottom: 60px;
+  width: 60px;
+  height: 60px;
+}
+
+div.actions input:hover{
+  cursor: pointer;
+}
+
+#background img {
+  position: relative;
+  top: 80px;
+}
+
+.item-image img {
+  height: 100px;
+  width: 100px;
+}

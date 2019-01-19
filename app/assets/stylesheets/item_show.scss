@@ -1,0 +1,38 @@
+.image-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  height: 60%;
+  width: 100%;
+  grid-gap: 5px;
+}
+
+img.show-thumbnail {
+  width: 100px;
+  height: 100px;
+}
+
+.videos-container {
+  display: block;
+}
+
+#div1 {
+  width: 400px;
+  height: 400px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+}
+
+#div1 img {
+  width: 400px;
+  height: 400px;
+}
+
+#google-frame iframe{
+  float: right;
+  width: 50%;
+  height: 500px;
+}
+
+.google-link {
+  text-decoration: none;
+}

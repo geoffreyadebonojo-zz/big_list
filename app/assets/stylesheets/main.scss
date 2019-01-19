@@ -1,9 +1,28 @@
 body {
-  font-size: 4em;
+  font-size: 3em;
   background: #5B85AA;
+  margin: 0;
+  font-family: 'Open Sans'; 
+}
+
+ul {
+  display: flex;
+  width: 200px;
+  margin: 0;
 }
 
 li {
   list-style: none;
   font-size: 0.5em;
+}
+
+a {
+  text-decoration: none;
+}
+
+#thumbnail-preview img {
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 120px;
 }

@@ -1,0 +1,23 @@
+.container {
+  display: grid;
+  grid-template-columns: 2em 4em 16em;
+  margin: 0 0 0 1em;
+}
+
+#item-headline {
+  font-family: 'Pacifico', cursive;
+  margin: 0 0 0 0.5em;
+}
+
+.item-name a{
+  text-decoration: none;
+}
+
+.item-name a:hover{
+  text-decoration: underline;
+}
+
+#wikipedia-frame {
+  width: 100%;
+  height: 200px;
+}
