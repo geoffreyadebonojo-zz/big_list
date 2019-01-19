@@ -1,10 +1,11 @@
 <div class="main container">
 <% @items.each do |item| %>
-
-  <%= link_to ItemPresenter.new(item).category, edit_item_path(item), class:"image-icon" %>
+  <%#link_to ItemPresenter.new(item).category, edit_item_path(item), class:"image-icon" %>
 
   <% if item.image %>
-    <div class="item-image"><img src="<%= item.image %>" alt="select"></div>
+    <a href="/items/<%= item.id %>/edit" class="item-image">
+      <img src="<%= item.image %>" alt="select"></img>
+    </a>
   <% else %>
     <div><%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_item_path(item) %></div>
   <% end %>
