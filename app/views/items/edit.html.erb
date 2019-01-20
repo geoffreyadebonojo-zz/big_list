@@ -22,21 +22,22 @@
     <% end %>
   </div>
 
-  <div id="background"></div>
+  <div class="field" id="img-url"></div>
 
-  <div class="field" id="img-url">
+  <div id="background">
+    <img src="<%= @item.image %>" alt="">
   </div>
 
   <div class="field">
     <%= f.text_field :name, {id: :item_name, required: true, placeholder:"New Item"} %>
   </div>
 
-
-
   <div class="actions">
-    <%= f.submit "save" %>
+    <%= f.submit "update" %>
   </div>
 <% end %>
+
+<%= button_to "go back", items_path, method: :get %>
 
 <% if @images %>
   <div class="image-container">

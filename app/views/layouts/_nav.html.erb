@@ -1,3 +1,5 @@
+
+
 <ul id="nav-links">
 
   <li>
@@ -9,19 +11,27 @@
   </li>
 
   <li>
-    <%# link_to '<i class="fas fa-tv"></i> Random'.html_safe, random_documentary, target:"_blank" %>
+    <!-- I like the random documentary functionality but it comes back broken more often than not-->
+    <%= link_to '<i class="fas fa-tv"></i>'.html_safe, "#" %>
   </li>
 
   <li>
-    <%= link_to '<i class="fa fa-music" aria-hidden="true"></i>'.html_safe, "#" %>
+    <%= link_to '<i class="fa fa-music" aria-hidden="true"></i>'.html_safe, music_index_path %>
     <div id="music">music</div>
   </li>
 
   <li>
-    <%=link_to '<i class="fab fa-youtube"></i>'.html_safe, "https://www.youtube.com/playlist?list=WL", target:"_blank" %>
+    <div id="music-player"></div>
+  </li>
+
+  <li>
+    <%=link_to '<i class="fa fa-youtube-square"></i>'.html_safe, "https://www.youtube.com/playlist?list=WL", target:"_blank" %>
     <div id="youtube">watch-now</div>
   </li>
 
-
-
 </ul>
+
+<script>
+  console.log(localStorage.getItem("now-playing"));
+  document.getElementById("music-player").innerHTML = '<iframe src="' + localStorage.getItem("now-playing") + '" frameborder="0" allowfullscreen draggable="true"></iframe>';
+</script>

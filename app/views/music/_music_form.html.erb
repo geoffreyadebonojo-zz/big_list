@@ -1,6 +1,3 @@
-<br>
-<h1>Hello</h1>
-
 <%= form_for :music do |f| %>
   <% if @music.errors.any? %>
     <div id="error_explanation">
@@ -15,7 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.text_field :url, {id: :music_name, required: true, placeholder:"New Music"} %>
+    <%= f.text_field :name, {id: :music_name, required: true, placeholder:"put the name here"} %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :url, {id: :music_url, required: true, placeholder:"and the url here"} %>
   </div>
 
   <div class="actions">

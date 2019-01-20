@@ -2,20 +2,20 @@ ul#nav-links {
   position: fixed;
   z-index: 1;
   width: 100%;
-  height: 1em;
+  height: 2em;
   background: grey;
 
   li {
-    width: 3em;
-
-    &:hover {
-      background: white;
-    }
+    width: 5em;
 
     a i {
       position: relative;
       margin-left: 30%;
       margin-top: 0.5em;
+
+      &:hover {
+        background: white;
+      }
     }
   }
 }

@@ -5,15 +5,18 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+
     # cache this
     if params[:cmd] == "youtube"
       @videos = YoutubeService.new(@item.name).embed_links.uniq.first(16)
     elsif params[:cmd] == "wikipedia"
       @wikipedia_search_term = @item.name.gsub(/[ ]/, "_")
     elsif params[:cmd] == "google"
-      # @google_search_results = GoogleService.new(@item.name).load_pages
-      @google_search_results = [["link1", "l"],["link2", "l"],["link3", "l"],["link4", "l"]]
+      @google_search_results = GoogleService.new(@item.name).load_pages
+      # @google_search_results = [["link1", "l"],["link2", "l"],["link3", "l"],["link4", "l"]]
     end
+    search_term = @item.name.gsub(/[ ]/, "+")
+    @amazon_link = "https://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Daps&field-keywords=#{search_term}&rh=i%3Aaps%2Ck%3A#{search_term}"
   end
 
   def create
@@ -49,7 +52,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-    redirect_to items_path
+    redirect_to edit_item_path(@item)
   end
 
   private
