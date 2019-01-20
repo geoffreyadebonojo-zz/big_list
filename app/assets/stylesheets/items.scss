@@ -1,46 +1,33 @@
-// Place all the styles related to the items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-$img: 100px;
-
-
-.container {
-  display: grid;
-  grid-template-columns: 2em 5em;
-  margin: 0 0 0 1em;
-}
-
-#item-headline {
-  font-family: 'Pacifico', cursive;
-  margin: 0 0 0 0.5em;
-}
-
-.item-name a{
-  text-decoration: none;
-}
-
-.item-name a:hover{
-  text-decoration: underline;
-}
-
-
-//// SHOW
-
-.image-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  border: 1px red solid;
-  height: 60%;
-  width: 100%;
-  grid-gap: 5px;
-}
-
-img.show-thumbnail {
-  width: 100px;
-  height: 100px;
-}
-
-.videos-container {
-  display: block;
-}
+// input#item_name {
+//   font-size: 1em;
+//   border: transparent;
+//   width: 50%;
+//   margin: 0 10%;
+// }
+//
+// input#item_name::placeholder {
+//   color: blue;
+//   font-style: italic;
+//   text-indent: 20px;
+//   font-size: 0.8em;
+// }
+//
+// div.actions input {
+//   bottom: 9em;
+//   right: 5em;
+//   width: 5em;
+// }
+//
+// div.actions input{
+//   position: relative;
+//   font-size: 0.4em;
+//   float: right;
+//   left: -6em;
+//   bottom: 60px;
+//   width: 60px;
+//   height: 60px;
+// }
+//
+// div.actions input:hover{
+//   cursor: pointer;
+// }

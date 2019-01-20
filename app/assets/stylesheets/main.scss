@@ -1,4 +1,50 @@
 body {
-  font-size: 4em;
+  font-size: 3em;
   background: #5B85AA;
+  margin: 0;
+  font-family: 'Open Sans';
+}
+
+h1 {
+  margin: 0;
+  top: 1em;
+}
+
+ul {
+  display: flex;
+  width: 200px;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+  font-size: 0.5em;
+}
+
+#youtube, #music {
+  font-size: 0.4em;
+  position: relative;
+  bottom: 5px;
+  color: grey;
+}
+#youtube {
+  margin-left: 20%;
+}
+#music {
+  margin-left: 35%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main {
+  position: relative;
+  top: 2em;
+}
+
+#thumbnail-preview img {
+  position: relative;
+  width: 100px;
+  height: 120px;
 }

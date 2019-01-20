@@ -1,0 +1,25 @@
+<br>
+<h1>Music#index</h1>
+
+<%= render '/music/music_form',
+      music: @music
+      %>
+
+<%= link_to "New Music", new_music_path %>
+
+<div>
+  Now Playing: <div id="playing-name"></div>
+</div>
+
+<% @music_items.each do |mi| %>
+  <button onClick="update('<%= mi.url %>')"> <%= mi.name %> </button>
+<% end %>
+
+<script>
+  function update(link){
+      nowPlaying = localStorage.setItem("now-playing", link);
+      document.getElementById("music-player").innerHTML = '<iframe src="' + localStorage.getItem("now-playing") + '" frameborder="0" allowfullscreen draggable="true"></iframe>';
+      document.getElementById("playing-name").innerHTML = localStorage.getItem("now-playing");
+    console.log(document.getElementById("music-player"));
+  }
+</script>
