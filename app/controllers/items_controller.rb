@@ -1,6 +1,13 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all.order(:created_at)
+
+    if params[:sort]
+      @items = Item.filter(params[:sort])
+    else
+      @items = Item.all.order(:created_at)
+    end
+
+
   end
 
   def show
@@ -14,6 +21,8 @@ class ItemsController < ApplicationController
     elsif params[:cmd] == "google"
       @google_search_results = GoogleService.new(@item.name).load_pages
       # @google_search_results = [["link1", "l"],["link2", "l"],["link3", "l"],["link4", "l"]]
+    elsif params[:cmd] == "notes"
+      @notes = @item.notes
     end
     search_term = @item.name.gsub(/[ ]/, "+")
     @amazon_link = "https://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Daps&field-keywords=#{search_term}&rh=i%3Aaps%2Ck%3A#{search_term}"

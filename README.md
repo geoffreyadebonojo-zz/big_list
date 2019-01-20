@@ -1,24 +1,10 @@
-# README
+# BIG LIST
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Big List is a ToDoList app without the ToDo's. It lets you keep track of interesting
+people and things.
 
-Things you may want to cover:
+```
+'/items'
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Click the plus icon to 

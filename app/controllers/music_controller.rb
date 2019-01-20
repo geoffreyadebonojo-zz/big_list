@@ -10,6 +10,9 @@ class MusicController < ApplicationController
 
   def create
     @music = Music.create(music_params)
+    embed_uri = @music.url.split("/").last
+    @music.url = "https://www.youtube.com/embed/" + embed_uri
+    @music.save
     redirect_to music_index_path
   end
 

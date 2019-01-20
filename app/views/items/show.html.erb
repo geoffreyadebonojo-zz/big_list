@@ -1,11 +1,22 @@
 <br>
 <br>
-<div id="item-options"><%= @item.name %>
-<div class="link"><%= link_to '<i class="fab fa-youtube"></i>'.html_safe, item_path(@item, :params=>{:cmd=>"youtube"}) %></div>
-<div class="link"><%= link_to '<i class="fab fa-google" aria-hidden="true"></i>'.html_safe, item_path(@item, :params=>{:cmd=>"google"}) %></div>
-<div class="link"><%= link_to '<i class="fab fa-wikipedia-w"></i>'.html_safe, item_path(@item, :params=>{:cmd=>"wikipedia"}) %></div>
-<div class="link"><%= link_to '<i class="fab fa-amazon"></i>'.html_safe, @amazon_link, target:"_blank" %></div>
+<div>
+  <%= link_to @item.name, item_path(@item), id: "item-options" %>
+  <div class="link"><%= link_to '<i class="fab fa-youtube"></i>'.html_safe, item_path(@item, :params=>{:cmd=>"youtube"}) %></div>
+  <div class="link"><%= link_to '<i class="fab fa-google" aria-hidden="true"></i>'.html_safe, item_path(@item, :params=>{:cmd=>"google"}) %></div>
+  <div class="link"><%= link_to '<i class="fab fa-wikipedia-w"></i>'.html_safe, item_path(@item, :params=>{:cmd=>"wikipedia"}) %></div>
+  <div class="link"><%= link_to '<i class="fab fa-amazon"></i>'.html_safe, @amazon_link, target:"_blank" %></div>
+  <div class="link"><%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, item_path(@item, :params=>{:cmd=>"notes"}) %></div>
 </div>
+
+<% if @notes %>
+  <div class="notes-container">
+    <% @notes.each do |note| %>
+      <p><%= note.body %></p>
+    <% end %>
+  </div>
+<% end %>
+
 <% if @documentary %>
   <div class="documentaries-container">
     <%= link_to "#{@documentary}", @documentary, target:"_blank" %>
