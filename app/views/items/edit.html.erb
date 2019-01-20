@@ -1,4 +1,3 @@
-<br>
 <h1><%= @item.name %></h1>
 
 <%= form_for [@item] do |f| %>
@@ -14,14 +13,6 @@
     </div>
   <% end %>
 
-  <div class="field" id="icons-array">
-    <% @icons_array.each do |icon| %>
-      <input type="radio" name="item[category]" value="<%= icon[1] %>">
-        <div><%= icon[0] %></div>
-      <br>
-    <% end %>
-  </div>
-
   <div class="field" id="img-url"></div>
 
   <div id="background">
@@ -31,6 +22,11 @@
   <div class="field">
     <%= f.text_field :name, {id: :item_name, required: true, placeholder:"New Item"} %>
   </div>
+
+  <div class="field">
+    <%= f.text_field :category, {id: :item_category, placeholder:"Category"} %>
+  </div>
+  <hr>
 
   <div class="actions">
     <%= f.submit "update" %>

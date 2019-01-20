@@ -5,7 +5,7 @@ class ItemPresenter
   end
 
   def category
-    case @item.category
+    case @item.category.downcase
     when "film"
       '<i class="fas fa-film"></i>'.html_safe
     when "documentary"
