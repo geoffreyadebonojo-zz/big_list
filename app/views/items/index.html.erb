@@ -1,7 +1,7 @@
 <div class="main container">
 <% @items.each do |item| %>
 
-  <%= link_to ItemPresenter.new(item).category, "#item-#{item.id}", class:"image-icon" %>
+  <%= link_to ItemPresenter.new(item).category, "#", id:"#item-#{item.id}", class:"image-icon" %>
 
   <% if item.image %>
     <a href="/items/<%= item.id %>/edit" class="item-image">
