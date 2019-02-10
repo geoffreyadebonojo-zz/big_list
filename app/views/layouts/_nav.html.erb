@@ -1,6 +1,10 @@
 
 
-<ul id="nav-links">
+<ul class="navbar" id="nav-links">
+
+  <li>
+    <input type="text" id="search-bar">
+  </li>
 
   <li>
     <%= link_to '<i class="fas fa-bars"></i>'.html_safe, items_path %>
@@ -21,7 +25,7 @@
   </li>
 
   <!--li>
-    <div id="music-player"></div>
+    <iframe src="/music" frameborder="0"></iframe>
   </li-->
 
   <li>
@@ -29,6 +33,20 @@
     <div id="youtube">watch-now</div>
   </li>
 
+
+  <div class="dropdown">
+    <button class="dropdown-button">Categories</button>
+    <div class="dropdown-content">
+      <li><%= link_to 'all', items_path %></li>
+      <li><%= link_to 'current', items_path(:params => {:sort => :current}) %></li>
+      <li><%= link_to 'film', items_path(:params => {:sort => :film}) %></li>
+      <li><%= link_to 'person', items_path(:params => {:sort => :person}) %></li>
+      <li><%= link_to 'books', items_path(:params => {:sort => :book}) %></li>
+      <li><%= link_to 'topics', items_path(:params => {:sort => :book}) %></li>
+      <li><%= link_to 'resources', items_path(:params => {:sort => :book}) %></li>
+      <li><%= link_to 'documentaries', items_path(:params => {:sort => :book}) %></li>
+    </div>
+  </div>
 </ul>
 
 <script>

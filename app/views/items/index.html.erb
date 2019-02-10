@@ -1,23 +1,28 @@
-<div class="main container">
-<% @items.each do |item| %>
+<div id="main-container"><br><br></div>
+<script>
+  var n = "<%= @items.map {|item| item.name}.join(",") %>";
+  var names = n.split(",");
+  // console.log(names);
+  var search = document.getElementById("search-bar");
+  var main = document.getElementById("main-container");
 
-  <%= link_to ItemPresenter.new(item).category, "#", id:"#item-#{item.id}", class:"image-icon" %>
+  search.addEventListener('keyup', function() {
+    searchItems(search.value)
+  });
+  function searchItems(input) {
+    if (input !== "") {
+      var query = input.toLowerCase();
+      var filtered = names.filter((name) => {
+        return name.toLowerCase().includes(query)
+      })
+      main.innerHTML = `<br><br>`;
+      for (var i=0; i<filtered.length; i++){
+        main.innerHTML += `<div>${filtered[i]}</div>`;
+      }
+      console.log(filtered)
+    } else {
+      // loadItems(foods)
+    }
+  };
 
-  <% if item.image %>
-    <a href="/items/<%= item.id %>/edit" class="item-image">
-      <img src="<%= item.image %>" alt="select"></img>
-    </a>
-  <% else %>
-    <div><%= link_to '<i class="far fa-image"></i>'.html_safe, edit_item_path(item) %></div>
-  <% end %>
-
-  <div class="item-name" id="item-<%= item.id %>"><%= link_to item.name, item_path(item) %></div>
-
-  <% if item.notes != [] %>
-    <div class="item-notes">notes</div>
-  <% else %>
-    <div class="item-notes">-</div>
-  <% end %>
-
-<% end %>
-</div>
+</script>
