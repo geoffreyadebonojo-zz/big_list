@@ -1,27 +1,44 @@
 <div id="main-container"><br><br></div>
 <script>
-  var n = "<%= @items.map {|item| item.name}.join(",") %>";
-  var names = n.split(",");
-  // console.log(names);
+  var name = "<%= @items.map {|item| item.name}.join(",") %>";
+  var img = "<%= @items.map {|item| item.image}.join(",") %>";
+  var id = "<%= @items.map {|item| item.id}.join(",") %>";
+  var names = name.split(",");
+  var images = img.split(",");
+  var ids = id.split(",");
+
+  var entries = []
+  for (var i= 0; i<ids.length; i++){
+    entry = {name: names[i], id: ids[i], img: images[i]};
+    entries.push(entry);
+  }
+
+  console.log(entries);
   var search = document.getElementById("search-bar");
   var main = document.getElementById("main-container");
 
+  function loadItems(input){
+    console.log(input);
+    main.innerHTML = `<br><br>`;
+    input.forEach((entry)=>{
+      main.innerHTML += `<div><a href="items/${entry.id}">${entry.id}: ${entry.name}</a></div>`;
+    });
+  }
+
+  loadItems(entries);
   search.addEventListener('keyup', function() {
     searchItems(search.value)
   });
   function searchItems(input) {
-    if (input !== "") {
-      var query = input.toLowerCase();
-      var filtered = names.filter((name) => {
-        return name.toLowerCase().includes(query)
-      })
-      main.innerHTML = `<br><br>`;
-      for (var i=0; i<filtered.length; i++){
-        main.innerHTML += `<div>${filtered[i]}</div>`;
-      }
-      console.log(filtered)
+    if (input == "") {
+      loadItems(entries);
     } else {
-      // loadItems(foods)
+      var query = input.toLowerCase();
+      var filtered = entries.filter((entry) => {
+        console.log(entry);
+        return entry.name.toLowerCase().includes(query)
+      })
+      loadItems(filtered);
     }
   };
 
