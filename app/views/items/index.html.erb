@@ -1,3 +1,5 @@
+<%= render 'layouts/nav' %>
+
 <div id="main-container"><br><br></div>
 <script>
   var name = "<%= @items.map {|item| item.name}.join(",") %>";
@@ -13,7 +15,6 @@
     entries.push(entry);
   }
 
-  console.log(entries);
   var search = document.getElementById("search-bar");
   var main = document.getElementById("main-container");
 
@@ -21,24 +22,40 @@
     console.log(input);
     main.innerHTML = `<br><br>`;
     input.forEach((entry)=>{
-      main.innerHTML += `<div><a href="items/${entry.id}">${entry.id}: ${entry.name}</a></div>`;
+      if (entry.img == "") {
+        main.innerHTML += `
+        <div>
+          <a href="items/${entry.id}">
+            ${entry.id}: ${entry.name}
+          </a>
+        </div>
+        `;
+      } else {
+      main.innerHTML += `
+      <div>
+        <a href="items/${entry.id}">
+          <img src="${entry.img}" alt="#">: ${entry.name}
+        </a>
+      </div>
+      `;
+      }
     });
   }
 
-  loadItems(entries);
+  loadItems(entries.reverse());
   search.addEventListener('keyup', function() {
     searchItems(search.value)
   });
   function searchItems(input) {
     if (input == "") {
-      loadItems(entries);
+      loadItems(entries.reverse());
     } else {
       var query = input.toLowerCase();
       var filtered = entries.filter((entry) => {
         console.log(entry);
         return entry.name.toLowerCase().includes(query)
       })
-      loadItems(filtered);
+      loadItems(filtered.reverse());
     }
   };
 

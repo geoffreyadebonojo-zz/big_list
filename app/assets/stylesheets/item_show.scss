@@ -12,7 +12,15 @@ img.show-thumbnail {
 }
 
 .videos-container {
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5px;
+}
+
+
+.video {
+  width: 323px;
+  height: 200px;
 }
 
 #div1 {

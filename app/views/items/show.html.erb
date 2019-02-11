@@ -3,18 +3,28 @@
 <br>
 <br>
 <div id="item-options">
-  <%= link_to @item.name, item_path(@item)%>
+  <a href="<%= edit_item_path(@item) %>">
+    <img src="<%= @item.image %>" alt="add image">
+  </a>
+  <%= link_to @item.name, edit_item_path(@item) %>
   <div class="link"><%= link_to '<i class="fab fa-youtube"></i>'.html_safe, item_path(@item, :params=>{:cmd=>"youtube"}) %></div>
   <div class="link"><%= link_to '<i class="fab fa-google" aria-hidden="true"></i>'.html_safe, item_path(@item, :params=>{:cmd=>"google"}) %></div>
   <div class="link"><%= link_to '<i class="fab fa-wikipedia-w"></i>'.html_safe, item_path(@item, :params=>{:cmd=>"wikipedia"}) %></div>
   <div class="link"><%= link_to '<i class="fab fa-amazon"></i>'.html_safe, @amazon_link, target:"_blank" %></div>
-  <div class="link"><%# link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, new_note_path(:params => {:id => params[:id]}) %></div>
 </div>
 
 <% if @notes %>
   <div class="notes-container">
     <% @notes.each do |note| %>
       <p><%= note.body %></p>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @news %>
+  <div class="news-container">
+    <% @news.each do |story| %>
+    <li><%= story["title"] %></li>
     <% end %>
   </div>
 <% end %>
@@ -26,9 +36,15 @@
 <% end %>
 
 <% if @videos %>
+<button id="up"><</button>
+<button id="reset">Reset</button>
+<button id="down">></button>
   <div class="videos-container">
     <% @videos.each do |url| %>
-      <iframe id="video" src="<%= url %>" frameborder="0" allowfullscreen draggable="true"></iframe>
+    <div>
+      <button onclick="saveVideoAddress('<%= url %>')">SAVE</button>
+      <iframe class="video" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
+    </div>
     <% end %>
   </div>
 <% end %>
@@ -50,3 +66,61 @@
     <% end %>
   </div>
 <% end %>
+
+<script>
+  function saveVideoAddress(address){
+    localStorage.setItem("video", address);
+  }
+
+  var vids = document.getElementsByClassName('video');
+
+
+
+  console.log(vids);
+  document.querySelector('#down').addEventListener('click', function(){
+    console.log("++")
+    for (var i=0; i< 3; i++) {
+      let currentWidth = parseInt(vids[i].style.width.split("px")[0]);
+      let currentHeight = parseInt(vids[i].style.height.split("px")[0]);
+
+      console.log(currentWidth);
+
+      newWidth = `${currentWidth + 50}`;
+      newHeight = `${currentHeight + 20}`;
+
+      console.log(newWidth);
+
+
+      vids[i].style.width = `${newWidth}px`;
+      vids[i].style.height = `${newHeight}px`;
+    }
+  });
+
+  document.querySelector('#up').addEventListener('click', function(){
+    console.log("++")
+    for (var i=0; i< 3; i++) {
+      let currentWidth = parseInt(vids[i].style.width.split("px")[0]);
+      let currentHeight = parseInt(vids[i].style.height.split("px")[0]);
+
+      console.log(currentWidth);
+
+      newWidth = `${currentWidth - 50}`;
+      newHeight = `${currentHeight - 20}`;
+
+      console.log(newWidth);
+
+
+      vids[i].style.width = `${newWidth}px`;
+      vids[i].style.height = `${newHeight}px`;
+    }
+  });
+
+  document.querySelector('#reset').addEventListener('click', function(){
+    console.log("--")
+    for (var i=0; i< 3; i++) {
+      vids[i].style.width = "323px";
+      vids[i].style.height = "200px";
+    }
+  });
+
+</script>
