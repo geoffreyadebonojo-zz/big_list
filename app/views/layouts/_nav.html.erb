@@ -16,7 +16,7 @@
 
   <li>
     <!-- I like the random documentary functionality but it comes back broken more often than not-->
-    <%= link_to '<i class="fas fa-tv"></i>'.html_safe, "#" %>
+    <%= link_to '<i class="fas fa-tv"></i>'.html_safe, videos_path %>
   </li>
 
   <li>
@@ -48,10 +48,11 @@
       <li><%= link_to 'all', items_path %></li>
       <li><%= link_to 'current', items_path(:params => {:sort => :current}) %></li>
       <li><%= link_to 'film', items_path(:params => {:sort => :film}) %></li>
+      <li><%= link_to 'web', items_path(:params => {:sort => :web_development}) %></li>
       <li><%= link_to 'person', items_path(:params => {:sort => :person}) %></li>
       <li><%= link_to 'books', items_path(:params => {:sort => :book}) %></li>
-      <li><%= link_to 'topics', items_path(:params => {:sort => :book}) %></li>
-      <li><%= link_to 'resources', items_path(:params => {:sort => :book}) %></li>
+      <li><%= link_to 'topics', items_path(:params => {:sort => :topics}) %></li>
+      <li><%= link_to 'resources', items_path(:params => {:sort => :resources}) %></li>
       <li><%= link_to 'documentaries', items_path(:params => {:sort => :book}) %></li>
     </div>
   </div>

@@ -69,27 +69,19 @@
 
 <script>
   function saveVideoAddress(address){
-    localStorage.setItem("video", address);
+    videos = localStorage.setItem("video", address);
   }
 
   var vids = document.getElementsByClassName('video');
 
-
-
   console.log(vids);
   document.querySelector('#down').addEventListener('click', function(){
-    console.log("++")
-    for (var i=0; i< 3; i++) {
+    for (var i=0; i< vids.length; i++) {
       let currentWidth = parseInt(vids[i].style.width.split("px")[0]);
       let currentHeight = parseInt(vids[i].style.height.split("px")[0]);
 
-      console.log(currentWidth);
-
       newWidth = `${currentWidth + 50}`;
       newHeight = `${currentHeight + 20}`;
-
-      console.log(newWidth);
-
 
       vids[i].style.width = `${newWidth}px`;
       vids[i].style.height = `${newHeight}px`;
@@ -97,18 +89,12 @@
   });
 
   document.querySelector('#up').addEventListener('click', function(){
-    console.log("++")
-    for (var i=0; i< 3; i++) {
+    for (var i=0; i< vids.length; i++) {
       let currentWidth = parseInt(vids[i].style.width.split("px")[0]);
       let currentHeight = parseInt(vids[i].style.height.split("px")[0]);
 
-      console.log(currentWidth);
-
       newWidth = `${currentWidth - 50}`;
       newHeight = `${currentHeight - 20}`;
-
-      console.log(newWidth);
-
 
       vids[i].style.width = `${newWidth}px`;
       vids[i].style.height = `${newHeight}px`;
@@ -116,8 +102,7 @@
   });
 
   document.querySelector('#reset').addEventListener('click', function(){
-    console.log("--")
-    for (var i=0; i< 3; i++) {
+    for (var i=0; i< vids.length; i++) {
       vids[i].style.width = "323px";
       vids[i].style.height = "200px";
     }

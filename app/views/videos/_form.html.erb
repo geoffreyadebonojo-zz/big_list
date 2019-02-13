@@ -1,0 +1,31 @@
+<%= form_with(model: video, local: true) do |form| %>
+  <% if video.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(video.errors.count, "error") %> prohibited this video from being saved:</h2>
+
+      <ul>
+      <% video.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id="field">
+    <%= form.text_field :uri %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save Video"%>
+  </div>
+<% end %>
+
+<iframe id="currently-playing" src="url" frameborder="0" allowfullscreen></iframe>
+<script>
+  let currentlyPlaying = document.querySelector("#currently-playing")
+  let video = localStorage.getItem("video")
+  currentlyPlaying.src = video;
+  document.querySelector("#field").innerHTML = `
+    <input type="hidden" name="video[uri]" id="video_uri" value="${video}">
+  `;
+</script>

@@ -12,11 +12,9 @@ img.show-thumbnail {
 }
 
 .videos-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 5px;
+  display: flex;
+  flex-wrap: wrap;
 }
-
 
 .video {
   width: 323px;
