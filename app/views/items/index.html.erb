@@ -35,7 +35,6 @@
   var main = document.getElementById("main-container");
 
   function loadItems(input){
-    console.log(input);
     main.innerHTML = `<br><br>`;
     input.forEach((entry)=>{
       if (entry.img == "") {
@@ -62,13 +61,13 @@
   search.addEventListener('keyup', function() {
     searchItems(search.value)
   });
+
   function searchItems(input) {
     if (input == "") {
       loadItems(entries.reverse());
     } else {
       var query = input.toLowerCase();
       var filtered = entries.filter((entry) => {
-        console.log(entry);
         return entry.name.toLowerCase().includes(query)
       })
       loadItems(filtered.reverse());

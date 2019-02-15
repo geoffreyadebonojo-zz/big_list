@@ -29,6 +29,5 @@
     localStorage.setItem("current", link);
     document.getElementById("background").innerHTML = '<img src="' + localStorage.getItem("current") + '" alt="click to add image"></img>';
     document.getElementById("img-url").innerHTML = '<input id="item_image" type="hidden" name="item[image]" value=' + localStorage.getItem("current") + '>';
-    console.log(document.getElementById("img-url"));
   }
 </script>

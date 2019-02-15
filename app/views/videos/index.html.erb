@@ -21,11 +21,6 @@
   var ids = "<%= @videos.map {|video| video.id}.join(",") %>";
   var uris = "<%= @videos.map {|video| video.uri}.join(",") %>";
 
-  console.log(ids.split(","));
-  console.log(uris.split(","));
-
-
-
   var root = document.querySelector("video-index-root");
   root.innerHTML = `
 
