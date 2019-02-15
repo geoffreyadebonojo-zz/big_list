@@ -12,7 +12,13 @@ img.show-thumbnail {
 }
 
 .videos-container {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.video {
+  width: 323px;
+  height: 200px;
 }
 
 #div1 {

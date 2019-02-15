@@ -1,6 +1,8 @@
-
-
 <ul id="nav-links">
+
+  <li>
+    <input type="text" id="search-bar">
+  </li>
 
   <li>
     <%= link_to '<i class="fas fa-bars"></i>'.html_safe, items_path %>
@@ -11,27 +13,16 @@
   </li>
 
   <li>
-    <!-- I like the random documentary functionality but it comes back broken more often than not-->
-    <%= link_to '<i class="fas fa-tv"></i>'.html_safe, "#" %>
+    <%= link_to '<i class="fas fa-tv"></i>'.html_safe, videos_path %>
   </li>
 
   <li>
     <%= link_to '<i class="fa fa-music" aria-hidden="true"></i>'.html_safe, music_index_path %>
-    <div id="music">music</div>
   </li>
-
-  <!--li>
-    <div id="music-player"></div>
-  </li-->
 
   <li>
-    <%=link_to '<i class="fab fa-youtube-square"></i>'.html_safe, "https://www.youtube.com/playlist?list=WL", target:"_blank" %>
-    <div id="youtube">watch-now</div>
+    <%= link_to '<i class="far fa-edit"></i>'.html_safe, notes_path %>
   </li>
 
-</ul>
 
-<script>
-  console.log(localStorage.getItem("now-playing"));
-  document.getElementById("music-player").innerHTML = '<iframe src="' + localStorage.getItem("now-playing") + '" frameborder="0" allowfullscreen draggable="true"></iframe>';
-</script>
+</ul>

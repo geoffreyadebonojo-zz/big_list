@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   def index
-
     if params[:sort]
       @items = Item.filter(params[:sort]).order(created_at: :desc)
+
     else
       @items = Item.all.order(:created_at)
     end
@@ -11,17 +11,20 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @notes = @item.notes
-    @note = @item.notes.new
 
     # cache this
     if params[:cmd] == "youtube"
-      @videos = YoutubeService.new(@item.name).embed_links.uniq.first(16)
+      @videos ||= YoutubeService.new(@item.name).embed_links.uniq
+
     elsif params[:cmd] == "wikipedia"
-      @wikipedia_search_term = @item.name.gsub(/[ ]/, "_")
+      @wikipedia_search_term ||= @item.name.gsub(/[ ]/, "_")
+
     elsif params[:cmd] == "google"
-      @google_search_results = GoogleService.new(@item.name).load_pages
-      # @google_search_results = [["link1", "l"],["link2", "l"],["link3", "l"],["link4", "l"]]
+      @google_search_results ||= GoogleService.new(@item.name).load_pages
+
+    elsif params[:cmd] == "news"
+      # @news ||= NewsService.new.get_major_sources_headlines[0]["articles"]
+      @news ||= NewsService.new.search_all_headlines(@item.name)
     end
 
     search_term = @item.name.gsub(/[ ]/, "+")
@@ -55,7 +58,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @icons_array = icons.zip(Item.all.pluck(:category).uniq)
     @icons_array.pop
-    images_raw = GoogleImageService.new(@item.name).img_array
+    images_raw = GoogleImageService.new(@item.name, @item.category).img_array
     images_raw.pop
     @images = images_raw
   end

@@ -1,23 +1,77 @@
-<div class="main container">
-<% @items.each do |item| %>
-
-  <%= link_to ItemPresenter.new(item).category, "#", id:"#item-#{item.id}", class:"image-icon" %>
-
-  <% if item.image %>
-    <a href="/items/<%= item.id %>/edit" class="item-image">
-      <img src="<%= item.image %>" alt="select"></img>
-    </a>
-  <% else %>
-    <div><%= link_to '<i class="far fa-image"></i>'.html_safe, edit_item_path(item) %></div>
-  <% end %>
-
-  <div class="item-name" id="item-<%= item.id %>"><%= link_to item.name, item_path(item) %></div>
-
-  <% if item.notes != [] %>
-    <div class="item-notes">notes</div>
-  <% else %>
-    <div class="item-notes">-</div>
-  <% end %>
-
-<% end %>
+<%= render 'layouts/nav' %>
+<div class="dropdown">
+  <button class="dropdown-button">Categories</button>
+  <div class="dropdown-content">
+    <li><%= link_to 'all', items_path %></li>
+    <li><%= link_to 'current', items_path(:params => {:sort => :current}) %></li>
+    <li><%= link_to 'film', items_path(:params => {:sort => :film}) %></li>
+    <li><%= link_to 'web', items_path(:params => {:sort => :web_development}) %></li>
+    <li><%= link_to 'person', items_path(:params => {:sort => :person}) %></li>
+    <li><%= link_to 'books', items_path(:params => {:sort => :book}) %></li>
+    <li><%= link_to 'topics', items_path(:params => {:sort => :topics}) %></li>
+    <li><%= link_to 'resources', items_path(:params => {:sort => :resources}) %></li>
+    <li><%= link_to 'documentaries', items_path(:params => {:sort => :book}) %></li>
+  </div>
 </div>
+
+<div id="main-container"></div>
+
+<script>
+  var name = "<%= @items.map {|item| item.name}.join(",") %>";
+  var image = "<%= @items.map {|item| item.image}.join(",") %>";
+  var id = "<%= @items.map {|item| item.id}.join(",") %>";
+
+  var names = name.split(",");
+  var images = image.split(",");
+  var ids = id.split(",");
+
+  var entries = []
+  for (var i= 0; i<ids.length; i++){
+    entry = {name: names[i], id: ids[i], img: images[i]};
+    entries.push(entry);
+  }
+
+  var search = document.getElementById("search-bar");
+  var main = document.getElementById("main-container");
+
+  function loadItems(input){
+    main.innerHTML = `<br><br>`;
+    input.forEach((entry)=>{
+      if (entry.img == "") {
+        main.innerHTML += `
+        <div>
+          <a href="items/${entry.id}">
+            ${entry.id}: ${entry.name}
+          </a>
+        </div>
+        `;
+      } else {
+      main.innerHTML += `
+      <div>
+        <a href="items/${entry.id}">
+          <img src="${entry.img}" alt="#">: ${entry.name}
+        </a>
+      </div>
+      `;
+      }
+    });
+  }
+
+  loadItems(entries.reverse());
+  search.addEventListener('keyup', function() {
+    searchItems(search.value)
+  });
+
+  function searchItems(input) {
+    if (input == "") {
+      loadItems(entries.reverse());
+    } else {
+      var query = input.toLowerCase();
+      var filtered = entries.filter((entry) => {
+        return entry.name.toLowerCase().includes(query)
+      })
+      loadItems(filtered.reverse());
+    }
+  };
+
+</script>

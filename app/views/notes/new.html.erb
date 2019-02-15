@@ -1,2 +1,6 @@
+<%= render 'layouts/nav' %>
 <br>
-<br>
+<%= link_to 'Back', notes_path %>
+<h1>New Note</h1>
+
+<%= render 'form', note: @note %>

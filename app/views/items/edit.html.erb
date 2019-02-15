@@ -1,45 +1,24 @@
-<h1><%= @item.name %></h1>
+<h3><%= @item.name %></h3>
+<%= link_to "go back", item_path(@item), method: :get %>
 
 <%= form_for [@item] do |f| %>
-  <% if @item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
-      <ul>
-      <% @item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  <span class="actions">
+    <%= f.submit "Save Image" %>
+  </span>
   <div class="field" id="img-url"></div>
-
-  <div id="background">
+  <span id="background">
     <img src="<%= @item.image %>" alt="">
-  </div>
-
-  <div class="field">
-    <%= f.text_field :name, {id: :item_name, required: true, placeholder:"New Item"} %>
-  </div>
-
-  <div class="field">
-    <%= f.text_field :category, {id: :item_category, placeholder:"Category"} %>
-  </div>
+  </span>
   <hr>
-
-  <div class="actions">
-    <%= f.submit "update" %>
-  </div>
 <% end %>
 
-<%= button_to "go back", items_path, method: :get %>
+<%= render 'form' %>
 
 <% if @images %>
   <div class="image-container">
     <% @images.each do |url| %>
       <button class="img-wrapper" onclick='update("<%= url %>")'>
-        <img id="drag1" src="<%= url %>" alt="" draggable="true" ondragstart="drag(event)" class="show-thumbnail">
+        <img id="drag1" src="<%= url %>" alt="" class="show-thumbnail">
       </button>
     <% end %>
   </div>
@@ -50,6 +29,5 @@
     localStorage.setItem("current", link);
     document.getElementById("background").innerHTML = '<img src="' + localStorage.getItem("current") + '" alt="click to add image"></img>';
     document.getElementById("img-url").innerHTML = '<input id="item_image" type="hidden" name="item[image]" value=' + localStorage.getItem("current") + '>';
-    console.log(document.getElementById("img-url"));
   }
 </script>

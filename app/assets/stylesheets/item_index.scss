@@ -24,13 +24,13 @@
   text-decoration: underline;
 }
 
-.item-image img {
+img {
   height: 80px;
   width: 80px;
   border: transparent 2px solid;
 }
 
-.item-image img:hover {
+img:hover {
   border: red 2px solid;
 }
 
