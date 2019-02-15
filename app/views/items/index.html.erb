@@ -1,12 +1,28 @@
 <%= render 'layouts/nav' %>
+<div class="dropdown">
+  <button class="dropdown-button">Categories</button>
+  <div class="dropdown-content">
+    <li><%= link_to 'all', items_path %></li>
+    <li><%= link_to 'current', items_path(:params => {:sort => :current}) %></li>
+    <li><%= link_to 'film', items_path(:params => {:sort => :film}) %></li>
+    <li><%= link_to 'web', items_path(:params => {:sort => :web_development}) %></li>
+    <li><%= link_to 'person', items_path(:params => {:sort => :person}) %></li>
+    <li><%= link_to 'books', items_path(:params => {:sort => :book}) %></li>
+    <li><%= link_to 'topics', items_path(:params => {:sort => :topics}) %></li>
+    <li><%= link_to 'resources', items_path(:params => {:sort => :resources}) %></li>
+    <li><%= link_to 'documentaries', items_path(:params => {:sort => :book}) %></li>
+  </div>
+</div>
 
-<div id="main-container"><br><br></div>
+<div id="main-container"></div>
+
 <script>
   var name = "<%= @items.map {|item| item.name}.join(",") %>";
-  var img = "<%= @items.map {|item| item.image}.join(",") %>";
+  var image = "<%= @items.map {|item| item.image}.join(",") %>";
   var id = "<%= @items.map {|item| item.id}.join(",") %>";
+
   var names = name.split(",");
-  var images = img.split(",");
+  var images = image.split(",");
   var ids = id.split(",");
 
   var entries = []

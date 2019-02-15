@@ -3,7 +3,7 @@ class VideosController < ApplicationController
 
   # GET /videos
   def index
-    @videos = Video.all
+    @videos = Video.order(created_at: :desc)
   end
 
   # GET /videos/1
@@ -24,7 +24,7 @@ class VideosController < ApplicationController
     @video = Video.new(video_params)
 
     if @video.save
-      redirect_to @video, notice: 'Video was successfully saved.'
+      redirect_to videos_path, notice: 'Video was successfully saved.'
     else
       render :new
     end

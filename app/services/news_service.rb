@@ -5,7 +5,6 @@ class NewsService
   def initialize
     # @key = ENV['NEWS_API_KEY']
     @key = "00358d30e06847738cbb4f75d9519f47"
-    #  @all_english_news = all_sources_english
   end
 
   def all_sources_english
@@ -53,6 +52,11 @@ class NewsService
     sources.map do |source|
       assemble_headlines(source)
     end.flatten
+  end
+
+  def search_all_headlines(term)
+    response = HTTParty.get("https://newsapi.org/v2/everything?q=#{term}&apiKey=#{@key}")
+    articles = response["articles"]
   end
 
   def histogram

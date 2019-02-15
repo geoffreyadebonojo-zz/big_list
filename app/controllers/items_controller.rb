@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   def index
-
     if params[:sort]
       @items = Item.filter(params[:sort]).order(created_at: :desc)
+
     else
       @items = Item.all.order(:created_at)
     end
@@ -14,13 +14,17 @@ class ItemsController < ApplicationController
 
     # cache this
     if params[:cmd] == "youtube"
-      @videos ||= YoutubeService.new(@item.name).embed_links.uniq.first(6)
+      @videos ||= YoutubeService.new(@item.name).embed_links.uniq
+
     elsif params[:cmd] == "wikipedia"
       @wikipedia_search_term ||= @item.name.gsub(/[ ]/, "_")
+
     elsif params[:cmd] == "google"
       @google_search_results ||= GoogleService.new(@item.name).load_pages
+
     elsif params[:cmd] == "news"
-      @news ||= NewsService.new.get_major_sources_headlines[0]["articles"]
+      # @news ||= NewsService.new.get_major_sources_headlines[0]["articles"]
+      @news ||= NewsService.new.search_all_headlines(@item.name)
     end
 
     search_term = @item.name.gsub(/[ ]/, "+")

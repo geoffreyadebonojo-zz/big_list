@@ -1,6 +1,4 @@
-
-
-<ul class="navbar" id="nav-links">
+<ul id="nav-links">
 
   <li>
     <input type="text" id="search-bar">
@@ -15,50 +13,16 @@
   </li>
 
   <li>
-    <!-- I like the random documentary functionality but it comes back broken more often than not-->
     <%= link_to '<i class="fas fa-tv"></i>'.html_safe, videos_path %>
   </li>
 
   <li>
     <%= link_to '<i class="fa fa-music" aria-hidden="true"></i>'.html_safe, music_index_path %>
-    <div id="music">music</div>
-  </li>
-
-  <!--li>
-    <iframe src="/music" frameborder="0"></iframe>
-  </li-->
-
-  <li>
-    <%=link_to '<i class="fab fa-youtube-square"></i>'.html_safe, "https://www.youtube.com/playlist?list=WL", target:"_blank" %>
-    <div id="youtube">watch-now</div>
   </li>
 
   <li>
-    <!-- I like the random documentary functionality but it comes back broken more often than not-->
-    <%= link_to 'news', "?cmd=news" %>
+    <%# link_to "Weather", "https://geoffreyadebonojo.github.io/", target:"_blank" %>
   </li>
 
-  <li>
-    <%= link_to "Weather", "https://geoffreyadebonojo.github.io/", target:"_blank" %>
-  </li>
 
-  <div class="dropdown">
-    <button class="dropdown-button">Categories</button>
-    <div class="dropdown-content">
-      <li><%= link_to 'all', items_path %></li>
-      <li><%= link_to 'current', items_path(:params => {:sort => :current}) %></li>
-      <li><%= link_to 'film', items_path(:params => {:sort => :film}) %></li>
-      <li><%= link_to 'web', items_path(:params => {:sort => :web_development}) %></li>
-      <li><%= link_to 'person', items_path(:params => {:sort => :person}) %></li>
-      <li><%= link_to 'books', items_path(:params => {:sort => :book}) %></li>
-      <li><%= link_to 'topics', items_path(:params => {:sort => :topics}) %></li>
-      <li><%= link_to 'resources', items_path(:params => {:sort => :resources}) %></li>
-      <li><%= link_to 'documentaries', items_path(:params => {:sort => :book}) %></li>
-    </div>
-  </div>
 </ul>
-
-<script>
-  console.log(localStorage.getItem("now-playing"));
-  document.getElementById("music-player").innerHTML = '<iframe src="' + localStorage.getItem("now-playing") + '" frameborder="0" allowfullscreen draggable="true"></iframe>';
-</script>

@@ -1,5 +1,4 @@
 <%= render 'layouts/nav' %>
-
 <br>
 <br>
 <div id="item-options">
@@ -11,6 +10,7 @@
   <div class="link"><%= link_to '<i class="fab fa-google" aria-hidden="true"></i>'.html_safe, item_path(@item, :params=>{:cmd=>"google"}) %></div>
   <div class="link"><%= link_to '<i class="fab fa-wikipedia-w"></i>'.html_safe, item_path(@item, :params=>{:cmd=>"wikipedia"}) %></div>
   <div class="link"><%= link_to '<i class="fab fa-amazon"></i>'.html_safe, @amazon_link, target:"_blank" %></div>
+  <div class="link"><%= link_to 'News', item_path(@item, :params=>{:cmd=>"news"}) %></div>
 </div>
 
 <% if @notes %>
@@ -24,7 +24,8 @@
 <% if @news %>
   <div class="news-container">
     <% @news.each do |story| %>
-    <li><%= story["title"] %></li>
+    <h2><%= story["title"] %></h2>
+    <p><%= story["description"] %></p>
     <% end %>
   </div>
 <% end %>
@@ -42,7 +43,7 @@
   <div class="videos-container">
     <% @videos.each do |url| %>
     <div>
-      <button onclick="saveVideoAddress('<%= url %>')">SAVE</button>
+      <%= button_to "Save", new_video_path, method: :get, onclick:"saveVideoAddress('#{url}');" %>
       <iframe class="video" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
     </div>
     <% end %>

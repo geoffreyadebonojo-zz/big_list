@@ -1,3 +1,25 @@
 // Place all the styles related to the music controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#toggle {
+  width: 100%;
+  height: 20px;
+  margin: 0;
+  position: relative;
+  bottom: 40px;
+  z-index: 2;
+}
+
+#music-player{
+  width: 100%;
+  height: 50px;
+  position: relative;
+  bottom: 50px;
+
+
+  iframe {
+    width: 100%; //minimum to display volume
+    height: 100px;
+  }
+}
