@@ -31,10 +31,16 @@ search by category
 
 -Add functionality to sort videos by date created
 
-
-
 -google load screen
 -filter google links to remove 'dead' links
 -display with js so you can sort it
 
 -fix page scroll on item index page to only scroll lower part of page.
+
+-set buttons to display favorited videos, videos start with display: none for faster loading?
+
+-study and pomodoro timer
+
+-create users
+
+-add arrows for music player to skip to next track
