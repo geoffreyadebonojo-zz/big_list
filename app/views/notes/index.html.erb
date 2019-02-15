@@ -1,0 +1,59 @@
+<%= render 'layouts/nav' %>
+<br>
+<%= link_to 'New Note', new_note_path %>
+
+<h1>Notes</h1>
+<input type="text" id="notes-search-bar">
+<div id="notes-main"></div>
+
+<br>
+<p id="notice"><%= notice %></p>
+
+<script>
+  var notesMain = document.querySelector("#notes-main")
+
+  var id = "<%= @notes.map {|note| note.id}.join(",") %>"
+  var body = "<%= @notes.map {|note| note.body}.join(",") %>"
+
+  var ids = id.split(",");
+  var bodies = body.split(",");
+
+
+  var notes = []
+  for (var i = 0; i<ids.length; i++){
+    var note = {
+      id: ids[i],
+      body: bodies[i],
+    };
+    notes.push(note)
+  }
+
+  console.log(notes);
+
+  function loadItems(input){
+    input.forEach((entry)=>{
+      notesMain.innerHTML += `<div>${entry.body}</div>`;
+    }
+  }
+
+  var search = document.getElementById("notes-search-bar");
+
+  loadItems(notes.reverse());
+
+  search.addEventListener('keyup', function() {
+    searchItems(search.value)
+    console.log(search.value);
+  });
+
+  function searchItems(input) {
+    if (input == "") {
+      loadItems(notes.reverse());
+    } else {
+      var query = input.toLowerCase();
+      var filtered = notes.filter((note) => {
+        return note.body.toLowerCase().includes(query)
+      })
+      loadItems(filtered.reverse());
+    }
+  };
+</script>
