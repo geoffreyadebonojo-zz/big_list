@@ -4,6 +4,8 @@ class NotesController < ApplicationController
   # GET /notes
   def index
     @notes = Note.all
+    @note = Note.new
+    @items = Item.pluck(:name)
   end
 
   # GET /notes/1
@@ -12,8 +14,6 @@ class NotesController < ApplicationController
 
   # GET /notes/new
   def new
-    @note = Note.new
-    @items = Item.pluck(:name)
   end
 
   # GET /notes/1/edit
@@ -25,7 +25,7 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
 
     if @note.save
-      redirect_to @note, notice: 'Note was successfully created.'
+      redirect_to notes_path, notice: 'Note was successfully created.'
     else
       render :new
     end
