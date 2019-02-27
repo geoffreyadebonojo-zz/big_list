@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field" id="name-field">
     <%= f.text_field :name, {id: :item_name, required: true, placeholder:"New Item"} %>
   </div>
 
@@ -19,7 +19,7 @@
     <%= f.hidden_field :category, {id: :item_category, placeholder:"Category"} %>
   </div>
 
-  <div class="actions">
-    <%= f.submit '<i class="fa fa-plus-square" aria-hidden="true"></i>'.html_safe %>
-  </div>
+  <%= button_tag( :class => "add-item-button") do %>
+    <i class="fa fa-plus-square" aria-hidden="true"></i>
+  <% end %>
 <% end %>
