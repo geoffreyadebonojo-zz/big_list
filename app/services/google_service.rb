@@ -27,7 +27,13 @@ class GoogleService
 
   def page(n)
     x = @agent.get("https://www.google.com" + @links[n.to_s])
-    relevant_links = x.links.find_all {|y| y.uri.to_s.include?("url") && !y.text.include?("Cached")}
+    relevant_links = x.links.find_all do |y|
+      y.uri.to_s.include?("url") &&
+      !y.uri.to_s.include?("www.google.com/aclk") &&
+      !y.uri.to_s.include?("www.youtube.com") &&
+      !y.uri.to_s.include?("settings/ads/") &&
+      !y.text.include?("Cached")
+    end
     relevant_links.map do |x|
       [x.text, x.uri.to_s.split("/url?q=").last.split("?sa=").first.split("&sa=").first]
     end
@@ -35,11 +41,11 @@ class GoogleService
 
   def load_pages
     all_results = []
-    (2..3).each do |page_number|
+    (2..6).each do |page_number|
       page(page_number).each do |link|
         all_results << link
       end
-      sleep(rand(5..10))
+      # sleep(rand(1..3))
     end
     all_results
   end

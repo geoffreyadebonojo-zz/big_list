@@ -1,21 +1,18 @@
 <%= render 'layouts/nav' %>
 <br>
 <p id="notice"><%= notice %></p>
-
-<h1>Videos</h1>
-
 <div id="video-index-root"></div>
-<table>
-  <tbody>
+
+  <div class="saved-video-card">
     <% @videos.each do |video| %>
-      <tr>
-        <td><iframe src="<%= video.uri %>" frameborder="0"></iframe></td>
-        <td><%= link_to 'Show', video %></td>
-        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <header>
+        <div><%= link_to 'Show', video %>|
+          <%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      <header>
+      <main><iframe src="<%= video.uri %>" frameborder="0" allowfullscreen></iframe></main>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
 <script>
   var ids = "<%= @videos.map {|video| video.id}.join(",") %>";

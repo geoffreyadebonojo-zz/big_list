@@ -1,10 +1,10 @@
-<%= render 'layouts/nav' %>
+    <input type="text" id="notes-search-bar">
+    <button onclick="refreshTopic()"><i class="far fa-edit"></i></button>
+
 <br>
+
+<div id="page-title"></div>
 <%= render 'form', note: @note %>
-
-
-<h1>Notes</h1>
-<input type="text" id="notes-search-bar">
 
 <div id="notes-main"></div>
 
@@ -33,7 +33,7 @@
     notesMain.innerHTML = "";
     input.forEach((entry)=>{
       notesMain.innerHTML += `
-        <div>${entry.body} ...<a href="/notes/${entry.id}" rel="nofollow" data-method="delete" id="delete-note-${entry.id})">Delete</a></div>
+        <div class="notes-body">${entry.body} ...<a href="/notes/${entry.id}" rel="nofollow" data-method="delete" id="delete-note-${entry.id})">Delete</a></div>
       `;
     });
   }
@@ -46,14 +46,12 @@
       }
     }
   }
-  console.log(notes);
 
   loadItems(notes.reverse());
 
   var search = document.getElementById("notes-search-bar");
   search.addEventListener('keyup', function() {
     searchItems(search.value)
-    console.log(search.value);
   });
 
   function searchItems(input) {
@@ -67,4 +65,9 @@
       loadItems(filtered.reverse());
     }
   };
+
+  function refreshTopic(){
+    loadItems(notes);
+    document.querySelector("#page-title").innerHTML = `${sessionStorage.getItem("page")}`;
+  }
 </script>

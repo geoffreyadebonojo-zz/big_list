@@ -16,27 +16,33 @@
   margin: 0 0 0 0.5em;
 }
 
-.item-name a{
-  text-decoration: none;
-}
-
-.item-name a:hover{
-  text-decoration: underline;
-}
-
 img {
-  height: 80px;
-  width: 80px;
+  height: 65px;
+  width: 165px;
   border: transparent 2px solid;
+  position: relative;
+  top: 17px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
 }
 
 img:hover {
   border: red 2px solid;
 }
 
-.link {
-  background: grey;
-  width: 60px;
-  height: 60px;
-  border-radius: 10px;
+.item-show-button {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  border: 3px solid blue;
+  color: blue;
+  background: white;
+  font-size: 1em;
+}
+
+.item-show-button:hover{
+  background: blue;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s;
+  transition: background 0.3s;
 }

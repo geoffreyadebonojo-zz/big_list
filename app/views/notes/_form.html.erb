@@ -11,18 +11,16 @@
     </div>
   <% end %>
 
-  <select>
-    <% @items.each do |item| %>
-    <option value="<%= item %>"><%= item %></option>
-    <% end %>
-  </select>
+  <div class="field" id="topic">
+
+  </div>
 
   <div class="field">
-    <%= form.text_area :body %>
+    <%= form.text_area :body, class:"text-area" %>
   </div>
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit id:"create-note-button"%>
   </div>
 <% end %>

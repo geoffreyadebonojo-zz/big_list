@@ -16,11 +16,10 @@
   </div>
 
   <div class="field">
-    <%= f.text_field :category, {id: :item_category, placeholder:"Category"} %>
+    <%= f.hidden_field :category, {id: :item_category, placeholder:"Category"} %>
   </div>
-  <hr>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit '<i class="fa fa-plus-square" aria-hidden="true"></i>'.html_safe %>
   </div>
 <% end %>

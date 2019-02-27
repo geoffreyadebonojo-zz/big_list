@@ -14,3 +14,6 @@
 //= require jquery
 //= require activestorage
 //= require_tree .
+
+
+console.log(sessionStorage.getItem("page"));
