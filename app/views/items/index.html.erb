@@ -1,19 +1,6 @@
 <%= render 'layouts/nav' %>
-<div class="dropdown">
-  <button class="dropdown-button">Categories</button>
-  <div class="dropdown-content">
-    <li><%= link_to 'all', items_path %></li>
-    <li><%= link_to 'current', items_path(:params => {:sort => :current}) %></li>
-    <li><%= link_to 'film', items_path(:params => {:sort => :film}) %></li>
-    <li><%= link_to 'web', items_path(:params => {:sort => :web_development}) %></li>
-    <li><%= link_to 'person', items_path(:params => {:sort => :person}) %></li>
-    <li><%= link_to 'books', items_path(:params => {:sort => :book}) %></li>
-    <li><%= link_to 'topics', items_path(:params => {:sort => :topics}) %></li>
-    <li><%= link_to 'resources', items_path(:params => {:sort => :resources}) %></li>
-    <li><%= link_to 'documentaries', items_path(:params => {:sort => :book}) %></li>
-  </div>
-</div>
-
+<br>
+<%= render '/items/form', item: @item = Item.new %>
 <div id="main-container"></div>
 
 <script>
@@ -35,26 +22,31 @@
   var main = document.getElementById("main-container");
 
   function loadItems(input){
-    main.innerHTML = `<br><br>`;
+    main.innerHTML = `<br>`;
     input.forEach((entry)=>{
       if (entry.img == "") {
         main.innerHTML += `
         <div>
           <a href="items/${entry.id}">
-            ${entry.id}: ${entry.name}
+            img:
+            ${entry.name}
           </a>
         </div>
         `;
       } else {
-      main.innerHTML += `
-      <div>
-        <a href="items/${entry.id}">
-          <img src="${entry.img}" alt="#">: ${entry.name}
-        </a>
-      </div>
+        main.innerHTML += `
+        <div>
+          <a href="items/${entry.id}">
+            <img src="${entry.img}" alt="#"><button class="item-show-button" onclick="logPage('${entry.name}')">${entry.name}</button>
+          </a>
+        </div>
       `;
       }
     });
+  }
+
+  function logPage(item) {
+    sessionStorage.setItem("page", item);
   }
 
   loadItems(entries.reverse());
@@ -73,5 +65,6 @@
       loadItems(filtered.reverse());
     }
   };
+
 
 </script>

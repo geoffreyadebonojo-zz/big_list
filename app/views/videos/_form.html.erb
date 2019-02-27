@@ -12,7 +12,7 @@
   <% end %>
 
   <div id="field">
-    <%= form.text_field :uri %>
+    <%= form.hidden_field :uri, :value => "", id: "hidden-field" %>
   </div>
 
   <div class="actions">
@@ -20,12 +20,7 @@
   </div>
 <% end %>
 
-<iframe id="currently-playing" src="url" frameborder="0" allowfullscreen></iframe>
 <script>
-  let currentlyPlaying = document.querySelector("#currently-playing")
-  let video = localStorage.getItem("video")
-  currentlyPlaying.src = video;
-  document.querySelector("#field").innerHTML = `
-    <input type="hidden" name="video[uri]" id="video_uri" value="${video}">
-  `;
+  let video = localStorage.getItem("video");
+  document.getElementById("hidden-field").value = video;
 </script>

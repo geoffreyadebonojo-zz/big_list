@@ -1,9 +1,11 @@
-<%= render 'layouts/nav' %>
-<br>
-<%= link_to 'New Note', new_note_path %>
+    <input type="text" id="notes-search-bar">
+    <button onclick="refreshTopic()"><i class="far fa-edit"></i></button>
 
-<h1>Notes</h1>
-<input type="text" id="notes-search-bar">
+<br>
+
+<div id="page-title"></div>
+<%= render 'form', note: @note %>
+
 <div id="notes-main"></div>
 
 <br>
@@ -18,7 +20,6 @@
   var ids = id.split(",");
   var bodies = body.split(",");
 
-
   var notes = []
   for (var i = 0; i<ids.length; i++){
     var note = {
@@ -28,21 +29,29 @@
     notes.push(note)
   }
 
-  console.log(notes);
-
-  function loadItems(input){
+  function loadItems(input) {
+    notesMain.innerHTML = "";
     input.forEach((entry)=>{
-      notesMain.innerHTML += `<div>${entry.body}</div>`;
+      notesMain.innerHTML += `
+        <div class="notes-body">${entry.body} ...<a href="/notes/${entry.id}" rel="nofollow" data-method="delete" id="delete-note-${entry.id})">Delete</a></div>
+      `;
+    });
+  }
+
+
+  function deleteNote(id){
+    for (var i=0; i<notes.length; i++){
+      if ( notes[i].id == id) {
+        notes.splice(i, 1);
+      }
     }
   }
 
-  var search = document.getElementById("notes-search-bar");
-
   loadItems(notes.reverse());
 
+  var search = document.getElementById("notes-search-bar");
   search.addEventListener('keyup', function() {
     searchItems(search.value)
-    console.log(search.value);
   });
 
   function searchItems(input) {
@@ -56,4 +65,9 @@
       loadItems(filtered.reverse());
     }
   };
+
+  function refreshTopic(){
+    loadItems(notes);
+    document.querySelector("#page-title").innerHTML = `${sessionStorage.getItem("page")}`;
+  }
 </script>

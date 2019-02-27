@@ -1,9 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<p style="font-size: 0.3em">
   <strong>Uri:</strong>
   <%= @video.uri %>
 </p>
+
+<iframe id="currently-playing" src="<%= @video.uri %>" frameborder="0" allowfullscreen></iframe>
+<script>
+  // let currentlyPlaying = document.querySelector("#currently-playing")
+  // let video = localStorage.getItem("video")
+  // currentlyPlaying.src = video;
+  // document.querySelector("#field").innerHTML = `
+  //   <input type="hidden" name="video[uri]" id="video_uri" value="${video}">
+  // `;
+</script>
 
 <%= link_to 'Edit', edit_video_path(@video) %> |
 <%= link_to 'Go To Videos', videos_path %>

@@ -1,46 +1,24 @@
 # BIG LIST
 
--Move add-new-item functionality into navbar
--Add fullscreen to videos iframe
--Move navbar functionality except for iframe into lower frame
-  -pages have their own specific sub-navs
--create dropdown menu for now playing
+Big List helps you find and keep track of resources you want to use.
 
--break categories into separate table
-establish CRUD for category-items
-search by category
+How to use:
+Click the "+" button to add
+a resource.
+When a resource has been added the user can access it by clicking on the name of the resource in the item index.
 
--Add search-youtube functionality for music
-  -enters song name
-  -populates with iframes
-  -user saves
 
--can minimize musicplayer and have it keep playing- thinking set height with event
+TODO:
 
--add conditional logic based on category
-  -movie has link to amazon (sometimes its free)
+-some kind of error handling for if no images are present
 
--functionality to choose a random video
-  -tag videos to display at a certain date
+-consider split page rendering for google links using scraper to split head and body
+When the user clicks a link, currently that link opens in a new page.
 
--make add new item as search dropdown
+-add placeholder image on item index page for if no image has been uploaded
 
--can minimize videos on the video index page
+-Add delete item option on the item show page.
 
--click save shouldn't need to take you to save page, should make action on db and leave you on the page; button should be disabled.
-
--Add functionality to sort videos by date created
-
--google load screen
--filter google links to remove 'dead' links
--display with js so you can sort it
-
--fix page scroll on item index page to only scroll lower part of page.
-
--set buttons to display favorited videos, videos start with display: none for faster loading?
-
--study and pomodoro timer
-
--create users
-
--add arrows for music player to skip to next track
+When a user clicks save from the youtube show page,
+it should save the video immediately
+and redirect to a page with the video in an iframe (like the new video page, but without the button).
