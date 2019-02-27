@@ -16,7 +16,7 @@
   margin: 0 0 0 0.5em;
 }
 
-img {
+img, .add-item-button {
   height: 65px;
   width: 165px;
   border: transparent 2px solid;
@@ -26,17 +26,40 @@ img {
   border-bottom-left-radius: 50px;
 }
 
+.add-item-button {
+  color: blue;
+  background: white;
+
+  i {
+    font-size: 4em;
+  }
+  &:hover {
+    color: white;
+    background: blue;
+    cursor: pointer;
+    transition: color 0.3s;
+    transition: background 0.3s;
+  }
+}
+
+
 img:hover {
   border: red 2px solid;
 }
 
-.item-show-button {
+.item-show-button, #item_name {
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
   border: 3px solid blue;
   color: blue;
   background: white;
   font-size: 1em;
+}
+
+#item_name {
+  position: relative;
+  top: 86px;
+  left: 165px;
 }
 
 .item-show-button:hover{
