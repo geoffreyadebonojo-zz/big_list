@@ -2,7 +2,7 @@ class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 
   def index
-    @videos = Video.order(created_at: :desc).first(5)
+    @videos = Video.order(created_at: :desc)
     @videos_sample = Video.order(created_at: :desc).sample(8)
   end
 
